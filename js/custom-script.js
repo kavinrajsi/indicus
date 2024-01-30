@@ -247,9 +247,7 @@ jQuery(document).ready(function ($) {
     $('.clear-product-filter').on('click', function(){
         location.reload();
     });
+    $('.filter-list-main__header .close-icon').on('click', function(){
+        $("body").removeClass("filter-open");
+    });
 });
-
-
-
-
-

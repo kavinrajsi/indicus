@@ -110,8 +110,10 @@ if($taxonomy != 'product-type' && $taxonomy != 'application-area' && $taxonomy !
 	                    </div>
 	                </label>
 	                <div class="filter-list-main">
+                    <div class="filter-list-main__header">
 	                    <h4 class="desktop-none">Filter</h4>
-
+                        <span class="close-icon"> × </span>
+                    </div>
 	                    <?php
 	                        $terms = get_terms(array(
 	                            'taxonomy' => 'application-area',
@@ -319,14 +321,14 @@ if($taxonomy != 'product-type' && $taxonomy != 'application-area' && $taxonomy !
 	                                    } ?>
 	                                    </ul><?php 
 	                                } ?>
-	                                <a href="<?php echo esc_url($url); ?>" class="btn-fill desktop-none">VIEW PRODUCT</a>
-	                            </div>
-
-	                            <div class="arc-back-content mobile-none">
-	                                <h3><?php echo esc_html($title); ?></h3>
-	                                <p><?php echo wp_trim_words(get_the_excerpt(), 30, '.'); ?></p>
 	                                <a href="<?php echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
 	                            </div>
+
+								<!-- <div class="arc-back-content mobile-none">
+	                                <h3><?php // echo esc_html($title); ?></h3>
+	                                <p><?php // echo wp_trim_words(get_the_excerpt(), 30, '.'); ?></p>
+	                                <a href="<?php // echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
+	                            </div> -->
 	                        </div>
 	                    </li>
 	                    <?php

@@ -264,7 +264,7 @@ $video_url = get_field('video_link');
 if( $videotitle || $video_url ) : ?>
 <section class="sin-video-blog">
 	<div class="small-container">
-		<h3 class="pab-80 mb-0"><?php echo $videotitle; ?> </h3>
+		<h3 class="pat-80 pab-80 mb-0"><?php echo $videotitle; ?> </h3>
 		<div class="youtube-area">
 			<iframe width="100%" height="580" src="<?php echo esc_attr($video_url); ?>" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		</div>
@@ -378,7 +378,7 @@ if( $posttitle || $inspiration_slider_option ) : ?>
 	            'posts_per_page' => 8,
 	            'orderby'        => 'date',
 	            'order'          => 'DESC',
-	        );
+	        ); 
 	        $query = new WP_Query($args);
 	        if (!$query->have_posts()) {
 	            echo 'No posts found';
@@ -390,7 +390,9 @@ if( $posttitle || $inspiration_slider_option ) : ?>
 		            $post_title = get_the_title();
 		            $tags = get_the_tags();
 		            $tag = !empty($tags) ? esc_html($tags[0]->name) : '';
-		            $current_class = $background_classes[$counter]; ?>
+		            $current_class = $background_classes[$counter]; 
+					$sub_heading = get_field('sub_heading');
+				?>
 		            <div class="item">
 						<div class="often-inner text-center">
 							<div class="ofter-pro-img">
@@ -399,7 +401,7 @@ if( $posttitle || $inspiration_slider_option ) : ?>
 								<?php endif; ?>
 							</div>
 							<h5><?php echo esc_html($post_title); ?></h5>
-							<p><?php echo get_the_content() ?></p>
+							<p><?php echo $sub_heading; ?></p>
 						</div>
 					</div><?php
 				endwhile; ?>

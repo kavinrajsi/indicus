@@ -1226,7 +1226,7 @@ function estimate_panting_form()
 					<div class="inputfeild">
 						<div class="zcwf_col_fld">
 							<input type="text" id="First_Name" name="First Name" maxlength="80" placeholder="First Name" style="display: none;">
-							<input type="text" id="Last_Name" name="Last Name" maxlength="80" placeholder="Enter your name">
+							<input type="text" id="Last_Name" name="Last Name" maxlength="80" placeholder="Your name">
 							<div class='zcwf_col_help'></div>
 						</div>
 						<div class="zcwf_col_fld"><input placeholder="Mobile number" type="text" id="Mobile" name="Mobile" maxlength="10">
@@ -1242,7 +1242,7 @@ function estimate_panting_form()
 						</div>
 						<div class="notice-callback-form">
 							<p>By proceeding, you are authorizing Indicus and its contractors to get in touch with you through calls, messages, or email.</p>
-							<p><a href="/terms-and-conditions/">Terms and Conditions</a></p>
+							</p>
 						</div>
 					</div>
 					<div class="zcwf_col_fld button" style="padding-bottom: 0;">

@@ -61,7 +61,7 @@ function indicus_pagination_load_posts() {
 	            )
 	        );
     	}
-  
+   $category = get_the_category();
         $count = $count->post_count; ?>
         <div class="incat-ul"><?php
         if ( $all_blog_posts->have_posts() ) {
@@ -77,9 +77,15 @@ function indicus_pagination_load_posts() {
 							<?php } ?>
 							<div class="insp-blog-content">
 								<h4><?php echo get_the_title(); ?></h4>
-								<p><?php echo wp_trim_words( get_the_content(), 30, '.' ); ?></p>
+								<p><?php echo wp_trim_words( get_the_content(), 30, '...' ); ?></p>
 								<div class="insp-pcomment">
-									<span><?php echo $category[0]->name; ?></span>
+
+									<?php
+                        // List all category names associated with the post
+                        foreach ($category as $cat) { if ($cat->name === 'ALL') { } else{   echo '<span>' . $cat->name . '</span>'; } }
+                        ?>
+
+									
 									<span><?php echo get_the_date( 'd.m.Y' ); ?></span>
 								</div>
 							</div>
@@ -296,7 +302,7 @@ function appointment_form()
 		</div>
 
 		<div class="inputfields">
-			<input type="text" id="name" name="Last Name" class="form-control" placeholder="Enter your name">
+			<input type="text" id="name" name="Last Name" class="form-control" placeholder="Your name">
 		</div>
 		<div class="inputfields">
 			<input type="number" id="mobile" name="Mobile" class="form-control" placeholder="Mobile number">
@@ -324,8 +330,8 @@ function appointment_form()
 			background: #fff;
 			padding:  48px 32px;
 			border-radius: 30px;
-			border-left: 10px solid #EEE9E9;
-			border-top: 5px solid #EEE9E9;
+			/*border-left: 10px solid #EEE9E9;
+			border-top: 5px solid #EEE9E9;*/
 			max-width: 400px;
 			margin-left: auto;
 			box-shadow: 4.46px 8.919px 44.597px 0px rgba(0, 0, 0, 0.25);
@@ -361,7 +367,7 @@ function appointment_form()
 		}
 		 .top_panting_form p {
 			color: #747474;
-			font-family: 'FONTSPRING DEMO - Cera Pro';
+			font-family: 'Cera Pro';
 			font-size: 10px;
 			font-style: normal;
 			font-weight: 400;
@@ -1392,7 +1398,7 @@ function contact_us_form()
 			<div class='zcwf_title'><h4>GET IN TOUCH WITH US</h4></div>
 			<div class="topbox">
 				<div class='zcwf_row'>
-					<div class='zcwf_col_fld'><input type='text' placeholder="Enter your name" id='Last_Name' name='Last Name' maxlength='80'></input>
+					<div class='zcwf_col_fld'><input type='text' placeholder="Name" id='Last_Name' name='Last Name' maxlength='80'></input>
 						<div class='zcwf_col_help'></div>
 					</div>
 				</div>

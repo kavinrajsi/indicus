@@ -194,14 +194,14 @@ $subtitle = get_field('filter_subtitle', 'option');
                                     } ?>
                                     </ul><?php 
                                 } ?>
-                                <a href="<?php echo esc_url($url); ?>" class="btn-fill desktop-none">VIEW PRODUCT</a>
-                            </div>
-
-                            <div class="arc-back-content mobile-none">
-                                <h3><?php echo esc_html($title); ?></h3>
-                                <p><?php echo wp_trim_words(get_the_excerpt(), 30, '.'); ?></p>
                                 <a href="<?php echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
                             </div>
+
+							<!-- <div class="arc-back-content mobile-none">
+                                <h3><?php // echo esc_html($title); ?></h3>
+                                <p><?php // echo wp_trim_words(get_the_excerpt(), 30, '.'); ?></p>
+                                <a href="<?php // echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
+                            </div> -->
                         </div>
                     </li>
                     <?php

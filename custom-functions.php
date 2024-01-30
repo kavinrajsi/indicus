@@ -125,7 +125,15 @@ function colour(){
         </div>
     </div>
      <div class="colour-main-outer defaultblock">
-      <ul><?php if ($terms && !is_wp_error($terms)) :
+      <ul>
+<li class="colorpick" data-id="0" data-name="All Colours">
+                    <a href="javascript:void(0);">
+                      <div class="color-box" style="" data-category-id="<?php echo esc_attr($term->term_id); ?>"><img src="<?php echo site_url(); ?>/wp-content/uploads/2023/12/1.png" alt="color-images" style="width: 100%; height: 100%;"></div>
+                        <span class="color-name">All Colours</span>
+                    
+                    </a>
+                </li>
+<?php if ($terms && !is_wp_error($terms)) :
         foreach ($terms as $term) : ?>
             <li class="colorpick" data-id="<?php echo $term->term_id; ?>" data-name="<?php echo $term->name; ?>">
                 <a href="javascript:void(0);"><?php 
@@ -202,7 +210,11 @@ function colour(){
             <h3 class="filter-category-name"></h3>
             <form>
                 <div class="color-main-filter" >
-                    <label class="mobile-none">Filter</label>
+                    <label class="mobile-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none" class="mobile-none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25 1.25C0.25 1.05109 0.329018 0.860322 0.46967 0.71967C0.610322 0.579018 0.801088 0.5 1 0.5H19C19.1989 0.5 19.3897 0.579018 19.5303 0.71967C19.671 0.860322 19.75 1.05109 19.75 1.25V4.25C19.75 4.43496 19.6816 4.61339 19.558 4.751L13 12.038V19.25C12.9999 19.4073 12.9503 19.5607 12.8582 19.6883C12.7661 19.8159 12.6363 19.9113 12.487 19.961L7.987 21.461C7.87431 21.4985 7.75432 21.5088 7.6369 21.4909C7.51948 21.4729 7.408 21.4274 7.31162 21.358C7.21525 21.2886 7.13674 21.1972 7.08257 21.0915C7.02839 20.9858 7.00009 20.8688 7 20.75V12.038L0.442 4.751C0.318412 4.61339 0.250033 4.43496 0.25 4.25V1.25ZM1.75 2V3.962L8.308 11.249C8.43159 11.3866 8.49997 11.565 8.5 11.75V19.709L11.5 18.71V11.75C11.5 11.565 11.5684 11.3866 11.692 11.249L18.25 3.962V2H1.75Z" fill="#1E1E1E"></path>
+                        </svg>
+                    </label>
                     <div class="desktop-none w-100 filter-cp-click">
                         <label class="fixed-filter">
                             <span>Filter</span>
@@ -478,13 +490,13 @@ function indicus_products_filter() {
                             } ?>
                             </ul><?php 
                         } ?>
-                        <a href="<?php echo esc_url($url); ?>" class="btn-fill desktop-none">VIEW PRODUCT</a>
-                    </div>
-                    <div class="arc-back-content mobile-none">
-                        <h3><?php echo esc_html($title); ?></h3>
-                        <p><?php echo wp_trim_words($excerpt, 30, '.'); ?></p>
                         <a href="<?php echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
                     </div>
+                   <!-- <div class="arc-back-content mobile-none">
+                        <h3><?php //echo esc_html($title); ?></h3>
+                        <p><?php //echo wp_trim_words($excerpt, 30, '.'); ?></p>
+                        <a href="<?php //echo esc_url($url); ?>" class="btn-fill">VIEW PRODUCT</a>
+                    </div> -->
                 </div>
             </li>
             <?php
@@ -499,4 +511,3 @@ function indicus_products_filter() {
 
 add_action('wp_ajax_indicus_products_filter', 'indicus_products_filter');
 add_action('wp_ajax_nopriv_indicus_products_filter', 'indicus_products_filter');
-

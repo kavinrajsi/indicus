@@ -32,13 +32,13 @@ get_header();
 		<section class="inspiration-inner">
 			<div class="small-container">
 				<div class="inspri-cate">
-					<h4 class="text-center">CATEGORIES</h4>	
+<!-- 					<h4 class="text-center">CATEGORIES</h4>	 -->
 					<ul class="ins-cate-filter"><?php 
 						$categories = get_categories(array('hide_empty'=> false, 'exclude'=>1));
 						foreach( $categories as $category ) { ?>
 							<li>
 								<label>
-									<input type="checkbox" name="cate-check" for="<?php echo $category->slug; ?>">
+									<input type="radio" name="cate-check" for="<?php echo $category->slug; ?>">
 									<span id="<?php echo $category->slug; ?>"><?php echo $category->name; ?></span>
 								</label>
 							</li><?php 
