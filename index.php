@@ -16,7 +16,7 @@ get_header();
 
 ?>
 
-	<main id="primary" class="site-main"><?php 
+	<main id="primary" class="site-main"><?php
 		$page_for_posts = get_option( 'page_for_posts' );
 		$banner_image = get_field('banner_image', $page_for_posts);
 		$banner_title = get_field('banner_title', $page_for_posts);
@@ -24,24 +24,34 @@ get_header();
 			<section class="inner-hero" style="background-image: url(<?php echo $banner_image; ?>);">
 			   	<div class="xs-small-container">
 			       	<div class="hero-banner-text">
-			            <h1><?php echo $banner_title; ?></h1>      
+			            <h1><?php echo $banner_title; ?></h1>
 			        </div>
 			   	</div>
-			</section><?php 
+			</section><?php
 		} ?>
 		<section class="inspiration-inner">
 			<div class="small-container">
 				<div class="inspri-cate">
 <!-- 					<h4 class="text-center">CATEGORIES</h4>	 -->
-					<ul class="ins-cate-filter"><?php 
+					<ul class="ins-cate-filter"><?php
 						$categories = get_categories(array('hide_empty'=> false, 'exclude'=>1));
-						foreach( $categories as $category ) { ?>
+						foreach( $categories as $category ) {
+                        $ALLCategroies = $category->name;
+                        if($ALLCategroies === 'All'){?>
+							<li class="dataALL">
+								<label>
+									<input type="radio" name="cate-check" for="<?php echo $category->slug; ?>" checked>
+									<span id="<?php echo $category->slug; ?>"><?php echo $category->name; ?></span>
+								</label>
+							</li><?php 
+                            }else {?>
 							<li>
 								<label>
 									<input type="radio" name="cate-check" for="<?php echo $category->slug; ?>">
 									<span id="<?php echo $category->slug; ?>"><?php echo $category->name; ?></span>
 								</label>
 							</li><?php 
+                            }
 						} ?>
 						<input type="hidden" id="insp_checked_category" value="">
 					</ul>

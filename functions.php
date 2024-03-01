@@ -345,16 +345,18 @@ function banner_slider()
 	<div class="home-bannerslider">
 		<div class="owl-carousel owl-theme" id="homebannerslider">
 			<?php
+			$index = 0;
 			if (have_rows('slider_repeater')) :
 				while (have_rows('slider_repeater')) : the_row();
 					$slider_image = get_sub_field('slider_image');
 					$mobile_image = get_sub_field('mobile_image');
 					$slider_title = get_sub_field('slider_title');
 					$slider_link = get_sub_field('slider_button_link');
+                $index++; // Increment index counter
 
 
 			?>
-					<div class="item">
+					<div class="item slideMe-<?php echo esc_attr($index); ?>">
 						<div class="sliderblock">
 							<div class="sliderimg">
 								<img src="<?php echo esc_url($slider_image['url']); ?>" alt="<?php echo esc_attr($slider_image['alt']); ?>" alt="Hero Image" class="mobile-none">
@@ -363,7 +365,7 @@ function banner_slider()
 							<div class="slidercontent">
 
 								<div class="slider-inner-data">
-									<h1><?php echo esc_html($slider_title); ?></h1>
+									<h1><?php echo $slider_title; ?></h1>
 									<?php
 									if ($slider_link) :
 										$link_url = $slider_link['url'];
@@ -468,12 +470,12 @@ function storyvideo_block()
 
 			// Get sub-field values.
 			$video_url = get_sub_field('video_url');
-			$video_title = get_sub_field('video_title');
+			$video_title = get_sub_field('video_title') ? get_sub_field('video_title') : 'Indicus Videos';
 
 			$video_id = get_youtube_video_id($video_url);
 
 			echo '<div class="item">';
-			echo '<iframe width="100%" height="580" src="' . esc_attr($video_url) . '" title="' . esc_attr($video_title) . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+			echo '<iframe loading="lazy" width="100%" height="580" src="' . esc_attr($video_url) . '" title="' . esc_attr($video_title) . '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
 			echo '</div>';
 
 		// End loop.
@@ -520,7 +522,7 @@ function header_search()
 					</svg>
 				</span>
 				<form class="pro-filter">
-					<input type="text" placeholder="Product Search" name="search_query" id="search_query">
+					<input type="text" placeholder="Search" name="search_query" id="search_query">
 				</form>
 				<span class="top-se-close">
 					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -529,7 +531,7 @@ function header_search()
 				</span>
 			</div>
 			<div id="rolling" style="display:none;">
-				<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/Rolling-1s-200px.gif">
+				<img loading="lazy" src="https://indicus.in/wp-content/uploads/2023/12/Rolling-1s-200px.gif">
 			</div>
 			<div class="pro-block product-img-block" id="productblockholder" style="display:none;">
 				<h3>Products</h3>
@@ -554,72 +556,6 @@ function header_search()
 	return $content;
 }
 
-// Gallery page
-add_shortcode('gallery_img', 'gallery_img_blog');
-
-function gallery_img_blog()
-{
-	ob_start();
-?>
-
-	<div class="gallery-inner">
-		<ul class="gallery-ilist">
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall01.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall01.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall02.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall02.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall03.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall03.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall04.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall04.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall05.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall05.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall06.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall06.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall07.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall07.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-			<li>
-				<a href="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall08.png" data-fancybox="images">
-					<img src="https://indicus.hipl-staging1.com/wp-content/uploads/2023/12/gall08.png" alt="" class="img-fluid w-100">
-				</a>
-			</li>
-		</ul>
-		<div class="pagination">
-			<ul>
-				<li><a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>
-				<li><a href="javascript:void(0)" class="active">1</a></li>
-				<li><a href="javascript:void(0)">2</a></li>
-				<li><a href="javascript:void(0)">3</a></li>
-				<li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>
-			</ul>
-		</div>
-	</div>
-
-	<?php
-	$content = ob_get_clean();
-	return $content;
-}
 
 
 // AJAX handler for product search
@@ -913,3 +849,10 @@ function add_additional_class_on_a($classes, $item, $args)
 }
 
 add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 1, 3);
+
+// remove emojis
+function disable_emojis() {
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  remove_action('wp_print_styles', 'print_emoji_styles');
+}
+add_action('init', 'disable_emojis');

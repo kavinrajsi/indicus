@@ -25,7 +25,7 @@ $current_category_id = get_queried_object_id(); ?>
                     <input class="colorselect" type="radio" name="radio" id="color-0" data-name="All Colours" data-id="0" checked>
                     <label class="custom-radio" for="color-0">
                         <div class="color-box">
-                            <img src="<?php echo site_url(); ?>/wp-content/uploads/2023/12/1.png" alt="color-images">
+                            <img src="<?php echo site_url(); ?>/wp-content/uploads/2024/01/indicus-all-color-palette.png" alt="color-images">
                         </div>
                         <span class="color-name">All Colours</span>
                     </label>

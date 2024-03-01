@@ -110,7 +110,7 @@ if($taxonomy != 'product-type' && $taxonomy != 'application-area' && $taxonomy !
 	                    </div>
 	                </label>
 	                <div class="filter-list-main">
-                    <div class="filter-list-main__header">
+                                        <div class="filter-list-main__header">
 	                    <h4 class="desktop-none">Filter</h4>
                         <span class="close-icon"> × </span>
                     </div>
@@ -152,13 +152,19 @@ if($taxonomy != 'product-type' && $taxonomy != 'application-area' && $taxonomy !
 	                                <?php
 	                                foreach ($prtypes as $prterm) {
 	                                    $prterm_id = $prterm->term_id;
-	                                    $prterm_name = $prterm->name; ?>
-	                                     <li id="product-type-<?php echo $prterm_id; ?>">
-	                                        <input type="checkbox" id="<?php echo esc_attr($prterm_name); ?>" value="<?php echo esc_attr($prterm_id); ?>">
-	                                        <label for="<?php echo esc_attr($prterm_name); ?>"><?php echo esc_attr($prterm_name); ?></label>
-	                                     </li>
-	                                    <?php 
-	                                } ?>
+	                                    $prterm_name = $prterm->name;
+	                                                    // Skip specific terms
+                if ($prterm_name === 'Interior Paints' || $prterm_name === 'Exterior Paints') {
+                    continue;
+                }
+                ?>
+                <li>
+                    <input type="checkbox" id="<?php echo esc_attr($prterm_name); ?>" value="<?php echo esc_attr($prterm_id); ?>">
+                    <label for="<?php echo esc_attr($prterm_name); ?>"><?php echo esc_attr($prterm_name); ?></label>
+                </li>
+                <?php 
+            } ?>
+
 	                            </ul>
 	                        </div>
 	                    <?php } ?>
@@ -306,7 +312,9 @@ if($taxonomy != 'product-type' && $taxonomy != 'application-area' && $taxonomy !
 	                        <div class="arc-pro-inner">
 	                            <div class="arc-pro-imge">
 	                            	<?php if($image){ ?>
+										<a href="<?php echo esc_url($url); ?>">
 	                                	<img class="img-fluid" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+										</a>
 	                            	<?php } ?>
 	                            </div>
 	                            <div class="arc-pro-content">

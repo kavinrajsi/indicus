@@ -32,7 +32,7 @@ $subtitle = get_field('filter_subtitle', 'option');
         <form>
             <div class="color-main-filter">
                 <label class="filter-cp-click">
-                    <span class="desktop-none">Filter</span>
+                   <span class="desktop-none">Filter</span>
                     <div class="top-mob-fil">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none" class="mobile-none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25 1.25C0.25 1.05109 0.329018 0.860322 0.46967 0.71967C0.610322 0.579018 0.801088 0.5 1 0.5H19C19.1989 0.5 19.3897 0.579018 19.5303 0.71967C19.671 0.860322 19.75 1.05109 19.75 1.25V4.25C19.75 4.43496 19.6816 4.61339 19.558 4.751L13 12.038V19.25C12.9999 19.4073 12.9503 19.5607 12.8582 19.6883C12.7661 19.8159 12.6363 19.9113 12.487 19.961L7.987 21.461C7.87431 21.4985 7.75432 21.5088 7.6369 21.4909C7.51948 21.4729 7.408 21.4274 7.31162 21.358C7.21525 21.2886 7.13674 21.1972 7.08257 21.0915C7.02839 20.9858 7.00009 20.8688 7 20.75V12.038L0.442 4.751C0.318412 4.61339 0.250033 4.43496 0.25 4.25V1.25ZM1.75 2V3.962L8.308 11.249C8.43159 11.3866 8.49997 11.565 8.5 11.75V19.709L11.5 18.71V11.75C11.5 11.565 11.5684 11.3866 11.692 11.249L18.25 3.962V2H1.75Z" fill="#1E1E1E"/>
@@ -43,7 +43,10 @@ $subtitle = get_field('filter_subtitle', 'option');
                     </div>
                 </label>
                 <div class="filter-list-main">
-                    <h4 class="desktop-none">Filter</h4>
+                                       <div class="filter-list-main__header">
+	                    <h4 class="desktop-none">Filter</h4>
+                        <span class="close-icon"> × </span>
+                    </div>
 
                     <?php
                         $terms = get_terms(array(
@@ -83,13 +86,18 @@ $subtitle = get_field('filter_subtitle', 'option');
                                 <?php
                                 foreach ($prtypes as $prterm) {
                                     $prterm_id = $prterm->term_id;
-                                    $prterm_name = $prterm->name; ?>
-                                     <li>
-                                        <input type="checkbox" id="<?php echo esc_attr($prterm_name); ?>" value="<?php echo esc_attr($prterm_id); ?>">
-                                        <label for="<?php echo esc_attr($prterm_name); ?>"><?php echo esc_attr($prterm_name); ?></label>
-                                     </li>
-                                    <?php 
-                                } ?>
+                                    $prterm_name = $prterm->name; 
+                                    // Skip specific terms
+                if ($prterm_name === 'Interior Paints' || $prterm_name === 'Exterior Paints') {
+                    continue;
+                }
+                ?>
+                <li>
+                    <input type="checkbox" id="<?php echo esc_attr($prterm_name); ?>" value="<?php echo esc_attr($prterm_id); ?>">
+                    <label for="<?php echo esc_attr($prterm_name); ?>"><?php echo esc_attr($prterm_name); ?></label>
+                </li>
+                <?php 
+            } ?>
                             </ul>
                         </div>
                     <?php } ?>
@@ -175,11 +183,12 @@ $subtitle = get_field('filter_subtitle', 'option');
                     $image = get_the_post_thumbnail_url();
                     $sub_heading = get_field('sub_heading'); ?>
                     <li class="singleproduct">
-                        
                         <div class="arc-pro-inner">
                             <div class="arc-pro-imge">
                                 <?php if($image){ ?>
+									<a href="<?php echo esc_url($url); ?>">
                                     <img class="img-fluid" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+									</a>
                                 <?php } ?>
                             </div>
                             <div class="arc-pro-content">

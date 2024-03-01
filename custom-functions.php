@@ -74,6 +74,7 @@ function stack_block()
             $post_title = get_the_title();
             $tags = get_the_tags();
             $tag = !empty($tags) ? esc_html($tags[0]->name) : '';
+            $categories = get_the_category();
             $current_class = $background_classes[$counter];
             ?>
 
@@ -85,7 +86,15 @@ function stack_block()
                         <?php endif; ?>
                     </div>
                     <div class="idea-img-caption <?php echo esc_attr($current_class); ?>">
-                        <p><?php echo esc_html($tag); ?></p>
+                        <p><?php 
+ 
+foreach ($categories as $category) {
+    if ($category->cat_name !== 'All') {
+        echo $category->cat_name . '';
+    }
+}
+
+                       ?></p>
                         <h5 class="line-clamp--two-line"><?php echo esc_html($post_title); ?></h5>
                     </div>
                 </a>
@@ -128,7 +137,7 @@ function colour(){
       <ul>
 <li class="colorpick" data-id="0" data-name="All Colours">
                     <a href="javascript:void(0);">
-                      <div class="color-box" style="" data-category-id="<?php echo esc_attr($term->term_id); ?>"><img src="<?php echo site_url(); ?>/wp-content/uploads/2023/12/1.png" alt="color-images" style="width: 100%; height: 100%;"></div>
+                      <div class="color-box" style="" data-category-id="<?php echo esc_attr($term->term_id); ?>"><img src="<?php echo site_url(); ?>/wp-content/uploads/2024/01/indicus-all-color-palette.png" alt="color-images" style="width: 100%; height: 100%;"></div>
                         <span class="color-name">All Colours</span>
                     
                     </a>
@@ -163,7 +172,7 @@ function colour(){
                     <input class="colorselect" type="radio" name="radio" id="color-0" data-name="All Colours" data-id="0" checked>
                     <label class="custom-radio" for="color-0">
                         <div class="color-box">
-                            <img src="<?php echo site_url(); ?>/wp-content/uploads/2023/12/1.png" alt="color-images">
+                            <img src="<?php echo site_url(); ?>/wp-content/uploads/2024/01/indicus-all-color-palette.png" alt="color-images">
                         </div>
                         <span class="color-name">All Colours</span>
                     </label>
@@ -226,7 +235,11 @@ function colour(){
                         </label>
                     </div>
                     <div class="filter-list-main">
-                        <h4 class="desktop-none">Filter</h4>
+                       <div class="filter-list-main__header">
+	                    <h4 class="desktop-none">Filter</h4>
+                        <span class="close-icon"> × </span>
+                    </div>
+                     
                         <div class="dropdown">
                             <a href="javascript:void(0)" class="js-link">Colour Temperature <i class="fa fa-chevron-down"></i></a>
                             <ul class="js-dropdown-list checkbox-container">
@@ -475,7 +488,9 @@ function indicus_products_filter() {
                 <div class="arc-pro-inner">
                     <div class="arc-pro-imge">
                         <?php if($image){ ?>
+                            <a href="<?php echo esc_url($url); ?>">
                             <img class="img-fluid" src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+                            </a>
                         <?php } ?>
                     </div>
                     <div class="arc-pro-content">

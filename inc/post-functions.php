@@ -81,8 +81,12 @@ function indicus_pagination_load_posts() {
 								<div class="insp-pcomment">
 
 									<?php
-                        // List all category names associated with the post
-                        foreach ($category as $cat) { if ($cat->name === 'ALL') { } else{   echo '<span>' . $cat->name . '</span>'; } }
+                        foreach ($category as $cat) {
+    if ($cat->cat_name !== 'All') {
+        echo '<span>' . $cat->name . '</span>';
+    }
+}
+
                         ?>
 
 									
@@ -157,124 +161,6 @@ function indicus_pagination_load_posts() {
 add_action( 'wp_ajax_indicus_pagination_load_posts', 'indicus_pagination_load_posts' );
 add_action( 'wp_ajax_nopriv_indicus_pagination_load_posts', 'indicus_pagination_load_posts' ); 
 
-/* gallery - pagination */
-function indicus_pagination_load_galleries(){
-	if(isset($_POST['page'])){
-
-        $page = sanitize_text_field($_POST['page']);
-        $cur_page = $page;
-        $page -= 1;
-        $per_page = 8; //set the per page limit
-        $previous_btn = true;
-        $next_btn = true;
-        $first_btn = true;
-        $last_btn = true;
-        $start = $page * $per_page;
-
-        $all_blog_posts = new WP_Query(
-            array(
-                'post_type'         => 'gallery',
-                'post_status'       => 'publish',
-                'posts_per_page'    => $per_page,
-                'offset'            => $start,
-		        'orderby'           => 'post_date',
-		        'order'             => 'DESC',
-            )
-	    );
-	    $count = new WP_Query(
-            array(
-                'post_type'         => 'gallery',
-                'post_status' 		=> 'publish',
-                'posts_per_page'    => -1,
-            )
-        );
-		$count = $count->post_count; ?>
-        <ul class="gallery-ilist"><?php
-        if ( $all_blog_posts->have_posts() ) {
-			while ( $all_blog_posts->have_posts() ) {
-		 		$all_blog_posts->the_post();
-		 		if(has_post_thumbnail()) : 
-		 			$preview_img = get_field('preview_image'); 
-		 			if(!$preview_img){
-		 				$preview_img = get_the_post_thumbnail_url(); 
-		 			} ?>
-					<li>
-	    				<a href="<?php echo $preview_img; ?>" data-fancybox="images">
-	    		      		<img src="<?php the_post_thumbnail_url();?>" alt="" class="img-fluid w-100">
-	    		    	</a>
-	    			</li><?php
-	    		endif;
-		 	}
-		 } else { ?>
-		 	<div class="noposts">No gallery found.</div><?php
-		 } ?>
-		 </ul> <?php
-
-        // This is where the magic happens
-        $no_of_paginations = ceil($count / $per_page);
-        if ($cur_page >= 7) {
-            $start_loop = $cur_page - 3;
-            if ($no_of_paginations > $cur_page + 3)
-                $end_loop = $cur_page + 3;
-            else if ($cur_page <= $no_of_paginations && $cur_page > $no_of_paginations - 6) {
-                $start_loop = $no_of_paginations - 6;
-                $end_loop = $no_of_paginations;
-            } else {
-                $end_loop = $no_of_paginations;
-            }
-        } else {
-            $start_loop = 1;
-            if ($no_of_paginations > 7)
-                $end_loop = 7;
-            else
-                $end_loop = $no_of_paginations;
-        } ?>
-        <div class='pagination'>
-            <ul><?php
-	         	if ($previous_btn && $cur_page > 1) {
-	            	$pre = $cur_page - 1; ?>
-	             	<li p='<?php echo $pre; ?>' class='active' onclick="loadmoregallery(this);">
-	             		<svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M1.07054 9.54294L9.43004 17.5079C9.56952 17.6409 9.75484 17.7151 9.94754 17.7151C10.1402 17.7151 10.3256 17.6409 10.465 17.5079L10.474 17.4989C10.5419 17.4345 10.5959 17.3569 10.6328 17.2709C10.6698 17.1849 10.6888 17.0923 10.6888 16.9987C10.6888 16.9051 10.6698 16.8125 10.6328 16.7265C10.5959 16.6405 10.5419 16.5629 10.474 16.4984L2.60204 8.99844L10.474 1.50144C10.5419 1.43698 10.5959 1.35939 10.6328 1.27339C10.6698 1.18739 10.6888 1.09478 10.6888 1.00119C10.6888 0.907604 10.6698 0.814993 10.6328 0.728993C10.5959 0.642993 10.5419 0.565404 10.474 0.500944L10.465 0.491943C10.3256 0.358976 10.1402 0.284799 9.94754 0.284799C9.75484 0.284799 9.56952 0.358976 9.43004 0.491943L1.07054 8.45694C0.997023 8.52699 0.938494 8.61124 0.898503 8.70457C0.858512 8.79791 0.837891 8.8984 0.837891 8.99994C0.837891 9.10149 0.858512 9.20198 0.898503 9.29531C0.938494 9.38865 0.997023 9.4729 1.07054 9.54294Z" fill="#474747"/>
-						</svg>
-					</li><?php
-			    } else if ($previous_btn) { ?>
-		            <li class='inactive'>
-		            	<svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M1.07054 9.54294L9.43004 17.5079C9.56952 17.6409 9.75484 17.7151 9.94754 17.7151C10.1402 17.7151 10.3256 17.6409 10.465 17.5079L10.474 17.4989C10.5419 17.4345 10.5959 17.3569 10.6328 17.2709C10.6698 17.1849 10.6888 17.0923 10.6888 16.9987C10.6888 16.9051 10.6698 16.8125 10.6328 16.7265C10.5959 16.6405 10.5419 16.5629 10.474 16.4984L2.60204 8.99844L10.474 1.50144C10.5419 1.43698 10.5959 1.35939 10.6328 1.27339C10.6698 1.18739 10.6888 1.09478 10.6888 1.00119C10.6888 0.907604 10.6698 0.814993 10.6328 0.728993C10.5959 0.642993 10.5419 0.565404 10.474 0.500944L10.465 0.491943C10.3256 0.358976 10.1402 0.284799 9.94754 0.284799C9.75484 0.284799 9.56952 0.358976 9.43004 0.491943L1.07054 8.45694C0.997023 8.52699 0.938494 8.61124 0.898503 8.70457C0.858512 8.79791 0.837891 8.8984 0.837891 8.99994C0.837891 9.10149 0.858512 9.20198 0.898503 9.29531C0.938494 9.38865 0.997023 9.4729 1.07054 9.54294Z" fill="#474747"/>
-						</svg>
-					</li><?php
-	      		}
-
-	         	for ($i = $start_loop; $i <= $end_loop; $i++) {
-	             	if ($cur_page == $i){ ?>
-	                 	<li p='<?php echo $i; ?>' class = 'selected' ><?php echo $i; ?></li><?php
-	          		} else { ?>
-	                 	<li p='<?php echo $i; ?>' class='active' onclick="loadmoregallery(this);"><?php echo $i; ?></li><?php
-	             	}
-	         	}
-
-	         	if ($next_btn && $cur_page < $no_of_paginations) {
-	             	$nex = $cur_page + 1; ?>
-	             	<li p='<?php echo $nex; ?>' class='active' onclick="loadmoregallery(this);">
-	             		<svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M9.92946 9.54294L1.56996 17.5079C1.43048 17.6409 1.24516 17.7151 1.05246 17.7151C0.859753 17.7151 0.674442 17.6409 0.53496 17.5079L0.525959 17.4989C0.458106 17.4345 0.404077 17.3569 0.367156 17.2709C0.330235 17.1849 0.311196 17.0923 0.311196 16.9987C0.311196 16.9051 0.330235 16.8125 0.367156 16.7265C0.404077 16.6405 0.458106 16.5629 0.525959 16.4984L8.39796 8.99844L0.525959 1.50144C0.458106 1.43698 0.404077 1.35939 0.367156 1.27339C0.330235 1.1874 0.311196 1.09478 0.311196 1.00119C0.311196 0.907604 0.330235 0.814993 0.367156 0.728992C0.404077 0.642994 0.458106 0.565403 0.525959 0.500944L0.53496 0.491943C0.674442 0.358976 0.859753 0.2848 1.05246 0.2848C1.24516 0.2848 1.43048 0.358976 1.56996 0.491943L9.92946 8.45694C10.003 8.52699 10.0615 8.61124 10.1015 8.70457C10.1415 8.79791 10.1621 8.8984 10.1621 8.99994C10.1621 9.10149 10.1415 9.20198 10.1015 9.29531C10.0615 9.38865 10.003 9.4729 9.92946 9.54294Z" fill="#474747"/>
-							</svg>
-						</li><?php
-	      		} 	else if ($next_btn) { ?>
-	            	<li class='inactive'>
-	            		<svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M9.92946 9.54294L1.56996 17.5079C1.43048 17.6409 1.24516 17.7151 1.05246 17.7151C0.859753 17.7151 0.674442 17.6409 0.53496 17.5079L0.525959 17.4989C0.458106 17.4345 0.404077 17.3569 0.367156 17.2709C0.330235 17.1849 0.311196 17.0923 0.311196 16.9987C0.311196 16.9051 0.330235 16.8125 0.367156 16.7265C0.404077 16.6405 0.458106 16.5629 0.525959 16.4984L8.39796 8.99844L0.525959 1.50144C0.458106 1.43698 0.404077 1.35939 0.367156 1.27339C0.330235 1.1874 0.311196 1.09478 0.311196 1.00119C0.311196 0.907604 0.330235 0.814993 0.367156 0.728992C0.404077 0.642994 0.458106 0.565403 0.525959 0.500944L0.53496 0.491943C0.674442 0.358976 0.859753 0.2848 1.05246 0.2848C1.24516 0.2848 1.43048 0.358976 1.56996 0.491943L9.92946 8.45694C10.003 8.52699 10.0615 8.61124 10.1015 8.70457C10.1415 8.79791 10.1621 8.8984 10.1621 8.99994C10.1621 9.10149 10.1415 9.20198 10.1015 9.29531C10.0615 9.38865 10.003 9.4729 9.92946 9.54294Z" fill="#474747"/>
-						</svg>
-					</li><?php 
-	      		} ?>
-            </ul>
-        </div><?php
-    }
-    exit();
-}
-add_action( 'wp_ajax_indicus_pagination_load_galleries', 'indicus_pagination_load_galleries' );
-add_action( 'wp_ajax_nopriv_indicus_pagination_load_galleries', 'indicus_pagination_load_galleries' ); 
 
 /* appointment form */
 
@@ -342,7 +228,7 @@ function appointment_form()
 			border: none;
 			border-bottom: 1px solid #747474;
 			color: #747474;
-			font-family: 'FONTSPRING DEMO - Cera Pro';
+			font-family: 'CeraPro-Regular';
 			font-size: 18px;
 			font-style: normal;
 			font-weight: 400;
@@ -840,7 +726,7 @@ function requirement_quotation_form()
 						padding: 8px 0px;
 						box-sizing: border-box;
 						color: #333;
-						font-family: 'FONTSPRING DEMO - Cera Pro';
+						font-family: CeraPro-Regular !important;
 						font-size: 14px;
 						font-style: normal;
 						font-weight: 400;

@@ -19,7 +19,53 @@ section and everything up until
   <?php wp_head(); ?>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 </head>
+<!-- Google tag (gtag.js) --> <script async 
+src="https://www.googletagmanager.com/gtag/js?id=G-HHQWG0SRCX"></script> <script> 
+window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} 
+gtag('js', new Date()); gtag('config', 'G-HHQWG0SRCX'); </script> 
+<!-- Meta Pixel Code -->
+<script>
+(function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)})(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '445814880553593');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=445814880553593&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
+<script>
+(function (w, d, s, u) {
+w.gbwawc = {
+url: u,
+options: {
+        waId: "+91 9843005719",
+        siteName: "Indicus Paints",
+        siteTag: "Available",
+        siteLogo: "https://www.vncgroup.com/assets/img/IndicusPaints.png",
+        widgetPosition: "RIGHT",
+        triggerMessage: "",
+        welcomeMessage: "Welcome to Indicus Paints",
+        brandColor: "#25D366",
+        messageText: "",
+        replyOptions: ['','',''],
+    },
+};
+var h = d.getElementsByTagName(s)[0],
+j = d.createElement(s);
+j.async = true;
+j.src = "https://indicus.in/wp-content/themes/indicus/js/whatsapp-widget.min.js?_=" + Math.random();
+h.parentNode.insertBefore(j, h);
+})(window, document, "script", "https://waw.gallabox.com");
+</script>
+	
 <body <?php body_class(); ?>>
 
   <?php wp_body_open(); ?>
@@ -27,8 +73,8 @@ section and everything up until
   <div class="menu--container__wrapper">
     <div class="menu--container">
       <div class="menu--logo">
-        <a href="https://indicus.hipl-staging1.com/">
-          <svg class="logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 370.83 81.93">
+        <a href="<?php echo get_home_url(); ?>">
+          <svg class="logo" aria-label="INDICUS" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 370.83 81.93">
             <defs>
               <style>
                 .cls-1,
@@ -765,7 +811,7 @@ section and everything up until
               <path class="cls-89" d="M305.55,33.81V56.06a6,6,0,0,1-1.73,4.42,5.86,5.86,0,0,1-4.33,1.72,5.89,5.89,0,0,1-6.15-6.14V33.81H278.85v22.7a25.32,25.32,0,0,0,.56,5.42C281,69,285.8,74.11,294.11,74.72c3.77.27,10.93.08,16.51-5.93L320,74.72V33.81Z" transform="translate(0.16 -2)"></path>
               <rect class="cls-89" x="218.95" y="13.72" width="14.49" height="13.55"></rect>
               <path class="cls-89" d="M355.57,38,349,46.43A13.12,13.12,0,0,0,340.5,43q-2.82,0-2.82,1.53a1.41,1.41,0,0,0,.32.89,2.3,2.3,0,0,0,.85.64c.35.17.87.38,1.57.65l4,1.61a28,28,0,0,1,8.91,5.16,9.91,9.91,0,0,1,2.86,7.49,11.69,11.69,0,0,1-4.68,9.8q-4.67,3.58-12,3.58-11.44,0-17.32-7.73l6.44-8.23q5.16,5,11.13,5,3.54,0,3.54-1.77c0-.7-.78-1.37-2.34-2l-4.51-1.85a26.07,26.07,0,0,1-8.82-5.32,10.4,10.4,0,0,1-2.87-7.65,11.26,11.26,0,0,1,4.28-9.35Q333.32,32,340.42,32q9.43,0,15.15,6" transform="translate(0.16 -2)"></path>
-              <path class="cls-89" d="M362.8,30.34h1.31a2.2,2.2,0,0,0,1.29-.27.91.91,0,0,0,.34-.74.88.88,0,0,0-.16-.53,1,1,0,0,0-.46-.35,3.33,3.33,0,0,0-1.09-.12H362.8Zm-1.08,3.77V27.42H364a5.4,5.4,0,0,1,1.71.19,1.6,1.6,0,0,1,.85.64,1.72,1.72,0,0,1,.31,1,1.74,1.74,0,0,1-.53,1.28,2.06,2.06,0,0,1-1.39.61,1.74,1.74,0,0,1,.57.36,7.38,7.38,0,0,1,1,1.32l.82,1.31H366l-.59-1a5.38,5.38,0,0,0-1.14-1.56,1.4,1.4,0,0,0-.86-.23h-.64v2.84Zm2.73-8.63a5.26,5.26,0,0,0-2.55.67A4.87,4.87,0,0,0,360,28.07a5.27,5.27,0,0,0-.7,2.61,5.2,5.2,0,0,0,.69,2.58,4.88,4.88,0,0,0,1.93,1.92,5.19,5.19,0,0,0,5.17,0A4.86,4.86,0,0,0,369,33.26a5.2,5.2,0,0,0,.69-2.58,5.38,5.38,0,0,0-.7-2.61A4.81,4.81,0,0,0,367,26.15,5.28,5.28,0,0,0,364.45,25.48Zm0-1a6.38,6.38,0,0,1,3.07.81,5.77,5.77,0,0,1,2.32,2.3,6.24,6.24,0,0,1,0,6.22,5.71,5.71,0,0,1-2.31,2.31,6.27,6.27,0,0,1-6.2,0A5.71,5.71,0,0,1,359,33.77a6.24,6.24,0,0,1-.82-3.09,6.34,6.34,0,0,1,.84-3.13,5.8,5.8,0,0,1,2.33-2.3A6.37,6.37,0,0,1,364.45,24.44Z" transform="translate(0.16 -2)"></path>
+             
             </g>
           </svg>
         </a>
@@ -773,7 +819,7 @@ section and everything up until
       <div class="menu--action__icon--wrapper_mobile">
 
         <div class="icon__search header-search">
-          <a class="elementor-button elementor-button-link elementor-size-sm" href="#!">
+          <a class="elementor-button elementor-button-link elementor-size-sm" href="#!" alt="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
               <g clip-path="url(#clip0_6_107)">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0509 13.153C13.167 13.0368 13.3049 12.9446 13.4566 12.8817C13.6084 12.8188 13.771 12.7864 13.9353 12.7864C14.0995 12.7864 14.2622 12.8188 14.414 12.8817C14.5657 12.9446 14.7036 13.0368 14.8197 13.153L19.6322 17.9655C19.8667 18.1999 19.9985 18.5178 19.9987 18.8494C19.9988 19.181 19.8672 19.4991 19.6328 19.7336C19.3984 19.9682 19.0804 20.1 18.7488 20.1001C18.4173 20.1002 18.0992 19.9686 17.8647 19.7342L13.0522 14.9217C12.9359 14.8056 12.8437 14.6678 12.7808 14.516C12.7179 14.3643 12.6855 14.2016 12.6855 14.0374C12.6855 13.8731 12.7179 13.7104 12.7808 13.5587C12.8437 13.4069 12.9359 13.2691 13.0522 13.153H13.0509Z" fill="#333333">
@@ -813,7 +859,7 @@ wp_nav_menu(array(
           <div class="menu--action__icon--wrapper_desktop">
 
             <div class="icon__search header-search">
-              <a class="elementor-button elementor-button-link elementor-size-sm" href="#!">
+              <a class="elementor-button elementor-button-link elementor-size-sm" href="#!" alt="Search" aria-labelledby="Search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                   <g clip-path="url(#clip0_6_107)">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0509 13.153C13.167 13.0368 13.3049 12.9446 13.4566 12.8817C13.6084 12.8188 13.771 12.7864 13.9353 12.7864C14.0995 12.7864 14.2622 12.8188 14.414 12.8817C14.5657 12.9446 14.7036 13.0368 14.8197 13.153L19.6322 17.9655C19.8667 18.1999 19.9985 18.5178 19.9987 18.8494C19.9988 19.181 19.8672 19.4991 19.6328 19.7336C19.3984 19.9682 19.0804 20.1 18.7488 20.1001C18.4173 20.1002 18.0992 19.9686 17.8647 19.7342L13.0522 14.9217C12.9359 14.8056 12.8437 14.6678 12.7808 14.516C12.7179 14.3643 12.6855 14.2016 12.6855 14.0374C12.6855 13.8731 12.7179 13.7104 12.7808 13.5587C12.8437 13.4069 12.9359 13.2691 13.0522 13.153H13.0509Z" fill="#333333">
